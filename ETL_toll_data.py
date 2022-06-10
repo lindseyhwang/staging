@@ -1,4 +1,4 @@
-# import the libraries
+i# import the libraries
 
 from datetime import timedelta
 # The DAG object; we'll need this to instantiate a DAG
@@ -57,5 +57,21 @@ extract_data_from_tsv = BashOperator(
 )
 
 
+# define the fourth task
+extract_data_from_fixed_width = BashOperator (
+    task_id='extract_data_from_fixed_width',
+    bash_command='bash fixedwidth.sh',
+    dag=dag,
+)
+
+# define the final task
+consolidate_data = BashOperator (
+    task_id='consolidate_data',
+    bash_command='bash consolidate.sh',
+    dag=dag,
+)
+
 # task pipeline
-extract_data_from_csv >> extract_data_from_tsv
+conslidate_data
+
+
