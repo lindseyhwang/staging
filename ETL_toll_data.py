@@ -34,12 +34,28 @@ dag = DAG(
 
 # define the tasks
 
-# define the first task named extract
-extract = BashOperator(
+# define the first task
+unzip_data = BashOperator(
     task_id='unzip_data',
-    bash_command='cat fileformats.txt',
+    bash_command='bash unzip.sh',
     dag=dag,
 )
 
+
+# define the second task
+extract_data_from_csv = BashOperator(
+    task_id='extract_data_from_csv',
+    bash_command='bash csv2db.sh',
+    dag=dag,
+)
+
+# define the third task
+extract_data_from_tsv = BashOperator(
+    task_id='extract_data_from_tsv',
+    bash_command='bash tsv2db.sh',
+    dag=dag,
+)
+
+
 # task pipeline
-extract
+extract_data_from_csv >> extract_data_from_tsv
