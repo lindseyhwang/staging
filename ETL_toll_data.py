@@ -31,3 +31,15 @@ dag = DAG(
     schedule_interval=timedelta(days=1),
 )
 
+
+# define the tasks
+
+# define the first task named extract
+extract = BashOperator(
+    task_id='unzip_data',
+    bash_command='cat fileformats.txt',
+    dag=dag,
+)
+
+# task pipeline
+extract
