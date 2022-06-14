@@ -7,6 +7,6 @@
 
 # Combine phase
 
-echo "Combining data"
+echo "Consolidating data"
 
 paste csv_data.csv tsv_data.csv fixed_width_data.csv > extracted_data.csv  
