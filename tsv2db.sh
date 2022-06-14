@@ -9,6 +9,6 @@
 echo "Extracting data"
 
 # Extract the columns 
-# 5:numb_of_axles, 6: tollplaza_id, 7: tollplaza_code
+# 4:numb_of_axles, 5: tollplaza_id, 6: tollplaza_code
 
-cut -f5,6,7 tollplaza-data.tsv > tsv_data.csv
+cut -f4-6 tollplaza-data.tsv  > tsv_data.csv

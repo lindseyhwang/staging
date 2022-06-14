@@ -1,4 +1,4 @@
-i# import the libraries
+# import the libraries
 
 from datetime import timedelta
 # The DAG object; we'll need this to instantiate a DAG
@@ -31,7 +31,6 @@ dag = DAG(
     schedule_interval=timedelta(days=1),
 )
 
-
 # define the tasks
 
 # define the first task
@@ -40,7 +39,6 @@ unzip_data = BashOperator(
     bash_command='bash unzip.sh',
     dag=dag,
 )
-
 
 # define the second task
 extract_data_from_csv = BashOperator(
@@ -64,14 +62,19 @@ extract_data_from_fixed_width = BashOperator (
     dag=dag,
 )
 
-# define the final task
+# define the fifth task
 consolidate_data = BashOperator (
     task_id='consolidate_data',
     bash_command='bash consolidate.sh',
     dag=dag,
 )
 
+# define the sixth task
+transform_data = BashOperator (
+    task_id='transform_data',
+    bash_command='bash transform.sh',
+    dag=dag,
+)
+
 # task pipeline
-conslidate_data
-
-
+unzip_data >> extract_data_from_csv >> extract_data_from_tsv >> extract_data_from_fixed_width >> consolidate_data >> transform_data
