@@ -40,7 +40,7 @@ It has the below 7 fields
 Rowid  - This uniquely identifies each row. This is consistent across all the three files.
 Timestamp - What time did the vehicle pass through the toll gate.
 Anonymized Vehicle number - Anonymized registration number of the vehicle 
-Tollplaza id - Id of the toll plaza
+Toll-plaza id - Id of the toll plaza
 Tollplaza code - Tollplaza accounting code.
 Type of Payment code - Code to indicate the type of payment. Example : Prepaid, Cash.
 Vehicle Code -  Category of the vehicle as per the toll plaza.
